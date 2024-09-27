@@ -14,14 +14,8 @@
                 <img src="{{ asset('assets/img/pfp1.jpg') }}" alt="Profile Image" class="rounded-full mx-auto w-24 h-24 mb-4">
                 <h2 class="text-2xl font-bold">{{ $nama }}</h2>
                 <p class="text-sm opacity-75">{{ $npm }}</p>
-                <p class="text-sm opacity-75">{{ $kelas }}</p>
+                <p class="text-sm opacity-75">{{ $nama_kelas ?? 'Kelas Tidak Ditemukan' }}</p>
                 
-                <!-- Social Media Icons -->
-                <div class="flex justify-center space-x-4 mt-4">
-                    <a href="#" class="text-white"><i class="fab fa-instagram"></i></a>
-                    <a href="#" class="text-white"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-white"><i class="fab fa-globe"></i></a>
-                </div>
             </div>
             
             <div class="bg-gray-100 text-center text-gray-600 py-4 rounded-b-xl">
