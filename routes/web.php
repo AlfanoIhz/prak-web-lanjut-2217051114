@@ -20,14 +20,14 @@ Route::get('/', function () {
 });
 
 
-Route::get('/profile/{nama}/{npm}/{kelas}', [ProfileController::class, 'profile']);
-
-// Route::get('/profile', [ProfileController::class,'profile']);
-
-Route::get('/profile', [UserController::class,'profile']);
+// Route::get('/profile/{nama}/{npm}/{kelas}', [ProfileController::class, 'profile']);
 
 Route::get('/user/profile', [UserController::class,'profile']);
 
-Route::get('/user/create', [UserController::class,'create']);
+// Route::get('/user/create', [UserController::class,'create']);
+
+Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 
 Route::post('/user/store', [UserController::class,'store'])->name('user.store');
+
+Route::get('/user', [UserController::class, 'index']);
