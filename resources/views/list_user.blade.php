@@ -27,7 +27,8 @@
                     <td>{{ $user['npm'] }}</td>
                     <td>{{ $user['nama_kelas'] }}</td>
                     <td>
-                        <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                        <a href="{{ route('users.show', $user->id) }}"class="btn btn-sm btn-primary">View</a>
+                        <a href="#" class="btn btn-sm btn-warning">Edit</a>
                         <a href="#" class="btn btn-sm btn-danger">DELETE</a>
                     </td>
                 </tr>
