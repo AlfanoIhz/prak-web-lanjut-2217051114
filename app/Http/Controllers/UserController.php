@@ -83,14 +83,46 @@ class UserController extends Controller
 
     public function show($id)
     {
-        $user = $this->userModel->getUser($id);
+        $user = UserModel::findOrFail($id);
+        $kelas = Kelas::find($user->kelas_id); // Jika ingin menampilkan nama kelas
 
-        $data = [
-            'title' => 'Profile',
-            'user'  => $user,
-        ];
+        return view('profile', [
+            'title' => 'Show User',
+            'user' => $user,
+            'nama_kelas' => $kelas ? $kelas->nama_kelas : null, // Pastikan nama kelas ada, jika tidak tampilkan null
+        ]);
+    }
 
-        return view('profile', $data);
+    public function edit($id){
+        $user = UserModel::findOrFail($id);
+        $kelasModel = new Kelas();
+        $kelas = $kelasModel->getKelas();
+        $title = 'Edit User';
+        return view('edit_user', compact('user','kelas','title'));
+    }
+
+    public function update(Request $request, $id){
+        $user = UserModel::findOrFail($id);
+
+        $user->nama = $request->nama;
+        $user->npm = $request->npm;
+        $user->kelas_id = $request->kelas_id;
+
+        if ($request->hasFile('foto')){
+            $fotoName = time() . '.' . $request->foto->extension();
+            $request->foto->move(public_path('upload/img/'), $fotoName);
+            $user->foto = $fotoName;
+        }
+        $user->save();
+
+        return redirect()->to('/user')->with('success', 'User updated succesfully');
+    }
+
+    public function destroy($id){
+        $user = UserModel::findOrFail($id);
+        $user->delete();
+
+        return redirect()->to('/user')->with('success', 'User has been deleted succesfully.');
     }
 
 }
