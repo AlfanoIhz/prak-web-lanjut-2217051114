@@ -16,18 +16,17 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->to('/user');
 });
 
 
-// Route::get('/profile/{nama}/{npm}/{kelas}', [ProfileController::class, 'profile']);
 
 Route::get('/user/profile', [UserController::class,'profile']);
-
-// Route::get('/user/create', [UserController::class,'create']);
 
 Route::get('/user/create', [UserController::class, 'create'])->name('user.create');
 
 Route::post('/user/store', [UserController::class,'store'])->name('user.store');
 
-Route::get('/user', [UserController::class, 'index']);
+Route::get('/user', [UserController::class, 'index'])->name('user.list');
+
+Route::get('/show{id}', [UserController::class, 'show'])->name('users.show');
