@@ -10,7 +10,7 @@
                 <img src="{{ asset('upload/img/' . $user->foto) }}" alt="Profile Image" class="rounded-full mx-auto w-24 h-24 mb-4">
                 <h2 class="text-2xl font-bold">{{$user -> nama}}</h2>
                 <p class="text-sm opacity-75">{{$user -> npm }}</p>
-                <p class="text-sm opacity-75">{{$user -> nama_kelas ?? 'Kelas Tidak Ditemukan' }}</p>
+                <p class="text-sm opacity-75">{{$nama_kelas ?? 'Kelas Tidak Ditemukan' }}</p>
             </div>
             
             <div class="bg-gray-100 text-center text-gray-600 py-4 rounded-b-xl">
