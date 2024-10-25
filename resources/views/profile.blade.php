@@ -11,9 +11,11 @@
                 <h2 class="text-2xl font-bold">{{$user -> nama}}</h2>
                 <p class="text-sm opacity-75">{{$user -> npm }}</p>
                 <p class="text-sm opacity-75">{{$nama_kelas ?? 'Kelas Tidak Ditemukan' }}</p>
+                <p class="text-sm opacity-75">{{$nama_jurusan ?? 'Jurusan Tidak Ditemukan' }}</p>
             </div>
             
             <div class="bg-gray-100 text-center text-gray-600 py-4 rounded-b-xl">
+                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-md btn-warning">Edit</a>
                 <a href="{{ route('user.list') }}" class="btn btn-md btn-secondary">Back</a>
             </div>
         </div>

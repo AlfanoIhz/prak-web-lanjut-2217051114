@@ -3,7 +3,7 @@
 @section ('content')
 <div class="d-flex justify-content-center align-items-center bg-cover bg-center backdrop-blur-sm" style="height: 100vh; background-image: url('{{ asset('assets/img/bg-city.jpg') }}')">
 
-    <div class="bg-light mb-3 mt-2 p-4 rounded" style="max-width: 950px; width: 100%;">
+    <div class="bg-light mb-3 mt-2 p-4 rounded" style="max-width: 1080px; width: 100%;">
         <div class="mb-3 mt-2 text-center">
             <a href="{{ route('user.create') }}" class="btn btn-success">Add New User</a>
             <button class="btn btn-primary">Export to Excel</button>
@@ -16,6 +16,8 @@
                     <th scope="col">Name</th>
                     <th scope="col">NPM</th>
                     <th scope="col">Class</th>
+                    <th scope="col">Jurusan</th>
+                    <th scope="col">Foto</th>
                     <th scope="col">Action</th>
                 </tr>
             </thead>
@@ -26,6 +28,14 @@
                     <td>{{ $user['nama'] }}</td>
                     <td>{{ $user['npm'] }}</td>
                     <td>{{ $user['nama_kelas'] }}</td>
+                    <td>{{ $user['nama_jurusan'] }}</td>
+                    <td>
+                        @if ($user->foto)
+                            <img src="{{ asset('upload/img/' . $user->foto) }}" alt="Profile Image" class="rounded-full mx-auto w-16 h-16 mb-4">
+                        @else
+                            <img src="{{ asset('assets/img/profile.jpg') }}" alt="Default Profile Image" style="object-fit: cover; border-radius: 50%;" width="50" height="50">
+                        @endif
+                    </td>
                     <td>
                         <a href="{{ route('users.show', $user->id) }}"class="btn btn-sm btn-primary">View</a>
                         <a href="{{ route('user.edit', $user->id) }}" class="btn btn-warning btn-sm">Edit</a>
